@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/routes.dart';
 
 class HomeScreen extends StatelessWidget {
+  void _logout(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.login);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +26,9 @@ class HomeScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
+            ElevatedButton(
+                onPressed: () => _logout(context),
+                child: const Text('cikis yap')),
             SizedBox(
               height: 200.0,
               child: ListView.builder(

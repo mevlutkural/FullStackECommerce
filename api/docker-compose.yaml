@@ -1,0 +1,28 @@
+services:
+  database:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: IEFDrgu44OK1N5t1J0jQ0nW0L9e2Nz4
+      MYSQL_DATABASE: e_commerce
+      MYSQL_USER: e_commerce
+      MYSQL_PASSWORD: GVX9XEoFO355Wed94HbwC1p20djQujs
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: database
+      PMA_USER: e_commerce
+      PMA_PASSWORD: GVX9XEoFO355Wed94HbwC1p20djQujs
+      MYSQL_ROOT_PASSWORD: IEFDrgu44OK1N5t1J0jQ0nW0L9e2Nz4
+      UPLOAD_LIMIT: 50M
+    ports:
+      - 8080:80
+    depends_on:
+      - database
+volumes:
+  db:
